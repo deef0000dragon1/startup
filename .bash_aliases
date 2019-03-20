@@ -60,7 +60,7 @@ function extract() {
 }
 
 function internet() {
-	if ! [ -x "$(command -v git)" ]; then
+	if ! [ -x "$(command -v speedtest-cli)" ]; then
 		echo Error: speedtest-cli not installed. Installing.
 		apt install speedtest-cli
 	fi
