@@ -3,7 +3,7 @@
 The following code will install git, clone this repo, and run the code. 
 
 ```sh
-sudo apt install git; git clone https://github.com/deef0000dragon1/workspace.git; cd workspace; sudo bash run.sh
+sudo apt install git; git clone https://github.com/deef0000dragon1/startup.git; cd startup; sudo bash run.sh
 ```
 
 This code initializes the workspace for the user.
