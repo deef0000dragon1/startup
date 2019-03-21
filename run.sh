@@ -13,7 +13,7 @@ cp -f .bash_aliases ~/.bash_aliases
 #install programs
 sudo apt update
 sudo apt upgrade
-sudo apt install openssh htop
+sudo apt install openssh-server htop
 
 
 #force no root login over ssh
@@ -33,14 +33,14 @@ cp -f authorized_keys ~/.ssh/authorized_keys
 
 
 #set git user
-read -p "Enter name for git [Jeffrey Koehler Auto]: " name
-name=${name:-"Jeffrey Koehler Auto"}
-git config --global user.name $name
+#read -p "Enter name for git [Jeffrey Koehler Auto]: " name
+#name=${name:-"Jeffrey Koehler Auto"}
+#git config --global user.name $name
 
 #set git email
-read -p "Enter name for git [jeffreykoehlerauto@deef.tech]: " email
-email=${email:-"jeffreykoehlerauto@deef.tech"}
-git config --global user.email $email
+#read -p "Enter name for git [jeffreykoehlerauto@deef.tech]: " email
+#email=${email:-"jeffreykoehlerauto@deef.tech"}
+#git config --global user.email $email
 
 #set colors
 cp .dircolors ~/.dircolors
