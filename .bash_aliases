@@ -1,5 +1,10 @@
+eval $(dircolors -b .dircolors)
+
+
 alias reboot='sudo reboot'
 alias update='sudo apt-get upgrade'
+
+
 
 alias ls='ls -alh --color=auto' ## Use a long listing format ##
 alias ll='ls -la'               ## Show hidden files ##
