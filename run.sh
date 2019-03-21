@@ -13,12 +13,14 @@ set +e
 #move bash aliases to home directory
 cp -f .bash_aliases ~/.bash_aliases
 
+echo updating and upgrading
 #install programs
 sudo apt update
 sudo apt upgrade
+echo installing openssh, htop
 sudo apt install openssh-server htop
 
-
+echo forcing ssh key login
 #force no root login over ssh
 sudo sed -i 's/#\?\s*\(PermitRootLogin\s*\).*$/\1 no/' /etc/ssh/sshd_config
 
@@ -28,13 +30,14 @@ sudo sed -i 's/#\?\s*\(PasswordAuthentication\s*\).*$/\1 no/' /etc/ssh/sshd_conf
 #force allow public key authentication
 sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
 
+echo adding keys to authorized_keys
 #replace authorized keys file to .ssh/authorized_keys
 mkdir ~/.ssh
 touch ~/.ssh/authorized_keys
 cp -f authorized_keys ~/.ssh/authorized_keys
 
 
-
+echo setting git user
 #set git user
 #read -p "Enter name for git [Jeffrey Koehler Auto]: " name
 #name=${name:-"Jeffrey Koehler Auto"}
@@ -45,9 +48,10 @@ cp -f authorized_keys ~/.ssh/authorized_keys
 #email=${email:-"jeffreykoehlerauto@deef.tech"}
 #git config --global user.email $email
 
+echo setting girectory colors
 #set colors
 cp .dircolors ~/.dircolors
 
-
+echo reloading bashrc.
 #reload the bash file, reloading all the 
 source ~/.bashrc
