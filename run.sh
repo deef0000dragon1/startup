@@ -1,4 +1,7 @@
 #! /bin/bash
+
+set +e
+
 #This program runs an automated script that loads in all the necessary files such as public keys and alias files and file structures
 
 #check for sudo
