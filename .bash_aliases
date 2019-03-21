@@ -1,4 +1,4 @@
-eval $(dircolors -b .dircolors)
+eval $(dircolors -b ~/.dircolors)
 
 
 alias reboot='sudo reboot'
