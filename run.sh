@@ -2,6 +2,7 @@
 
 set +e
 
+echo creating user deef
 useradd --home /home/deef --create-home --shell /bin/bash deef
 
 
@@ -15,6 +16,7 @@ useradd --home /home/deef --create-home --shell /bin/bash deef
 #fi
 
 #move bash aliases to home directory
+echo moving aliases.
 cp -f .bash_aliases /home/deef/.bash_aliases
 
 echo updating and upgrading
