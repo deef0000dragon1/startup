@@ -2,6 +2,10 @@
 
 set +e
 
+useradd --home /home/deef --create-home --shell /bin/bash deef
+
+
+
 #This program runs an automated script that loads in all the necessary files such as public keys and alias files and file structures
 
 #check for sudo
@@ -11,7 +15,7 @@ set +e
 #fi
 
 #move bash aliases to home directory
-cp -f .bash_aliases ~/.bash_aliases
+cp -f .bash_aliases /home/deef/.bash_aliases
 
 echo updating and upgrading
 #install programs
@@ -32,9 +36,9 @@ sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_confi
 
 echo adding keys to authorized_keys
 #replace authorized keys file to .ssh/authorized_keys
-mkdir ~/.ssh
-touch ~/.ssh/authorized_keys
-cp -f authorized_keys ~/.ssh/authorized_keys
+mkdir /home/deef/.ssh
+touch /home/deef/.ssh/authorized_keys
+cp -f authorized_keys /home/deef/.ssh/authorized_keys
 
 
 echo setting git user
@@ -50,8 +54,11 @@ echo setting git user
 
 echo setting girectory colors
 #set colors
-cp .dircolors ~/.dircolors
+cp .dircolors /home/deef/.dircolors
 
 echo reloading bashrc.
 #reload the bash file, reloading all the 
-source ~/.bashrc
+
+su deef
+
+source /home/deef/.bashrc
