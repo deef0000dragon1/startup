@@ -1,5 +1,11 @@
 eval $(dircolors -b ~/.dircolors)
 
+#Set Bash Prompt to 
+#+-streem@mx.streem.tech
+#¦----Wed Mar 27, 09:06:06
+#+-~:
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\[$(tput setaf 1)\]╠════\[$(tput setaf 6)\]\d, \t \n\[$(tput setaf 1)\]╚═\[$(tput setaf 7)\]\w:\[$(tput sgr0)\]"
+
 
 alias reboot='sudo reboot'
 alias update='sudo apt-get upgrade'
