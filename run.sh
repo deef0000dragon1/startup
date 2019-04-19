@@ -8,7 +8,7 @@ while true; do
 	[Yy]*)
 		useradd --home /home/deef --create-home --shell /bin/bash deef
 		;;
-	[Nn]*) exit ;;
+	[Nn]*) break ;;
 
 	*) echo "Please answer yes or no." ;;
 	esac
@@ -31,7 +31,7 @@ while true; do
 		cp -f .dircolors ~/.dircolors
 
 		;;
-	[Nn]*) exit ;;
+	[Nn]*) break ;;
 
 	*) echo "Please answer yes or no." ;;
 	esac
@@ -45,7 +45,7 @@ while true; do
 		sudo apt upgrade
 		sudo apt install openssh-server htop
 		;;
-	[Nn]*) exit ;;
+	[Nn]*) break ;;
 
 	*) echo "Please answer yes or no." ;;
 	esac
@@ -64,7 +64,7 @@ while true; do
 		#force allow public key authentication
 		sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
 		;;
-	[Nn]*) exit ;;
+	[Nn]*) break ;;
 
 	*) echo "Please answer yes or no." ;;
 	esac
@@ -80,7 +80,7 @@ while true; do
 		touch ~.ssh/authorized_keys
 		cat authorized_keys >>~/.ssh/authorized_keys
 		;;
-	[Nn]*) exit ;;
+	[Nn]*) break ;;
 
 	*) echo "Please answer yes or no." ;;
 	esac
