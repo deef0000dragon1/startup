@@ -2,10 +2,17 @@
 
 set +e
 
-echo creating user deef
-useradd --home /home/deef --create-home --shell /bin/bash deef
+while true; do
+	read -p "Create User Deef? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		useradd --home /home/deef --create-home --shell /bin/bash deef
+		;;
+	[Nn]*) exit ;;
 
-
+	*) echo "Please answer yes or no." ;;
+	esac
+done
 
 #This program runs an automated script that loads in all the necessary files such as public keys and alias files and file structures
 
@@ -15,35 +22,71 @@ useradd --home /home/deef --create-home --shell /bin/bash deef
 #	exit 1
 #fi
 
-#move bash aliases to home directory
-echo moving aliases.
-cp -f .bash_aliases /home/deef/.bash_aliases
+while true; do
+	read -p "Move files into home? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		#move bash aliases to home directory
+		cp -f .bash_aliases ~/.bash_aliases
+		cp -f .dircolors ~/.dircolors
 
-echo updating and upgrading
-#install programs
-sudo apt update
-sudo apt upgrade
-echo installing openssh, htop
-sudo apt install openssh-server htop
+		;;
+	[Nn]*) exit ;;
 
-echo forcing ssh key login
-#force no root login over ssh
-sudo sed -i 's/#\?\s*\(PermitRootLogin\s*\).*$/\1 no/' /etc/ssh/sshd_config
+	*) echo "Please answer yes or no." ;;
+	esac
+done
 
-#force no password authentication over ssh
-sudo sed -i 's/#\?\s*\(PasswordAuthentication\s*\).*$/\1 no/' /etc/ssh/sshd_config
+while true; do
+	read -p "update/upgrade/install? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		sudo apt update
+		sudo apt upgrade
+		sudo apt install openssh-server htop
+		;;
+	[Nn]*) exit ;;
 
-#force allow public key authentication
-sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
+	*) echo "Please answer yes or no." ;;
+	esac
+done
 
-echo adding keys to authorized_keys
+while true; do
+	read -p "Update Key Values? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		#force no root login over ssh
+		sudo sed -i 's/#\?\s*\(PermitRootLogin\s*\).*$/\1 no/' /etc/ssh/sshd_config
+
+		#force no password authentication over ssh
+		sudo sed -i 's/#\?\s*\(PasswordAuthentication\s*\).*$/\1 no/' /etc/ssh/sshd_config
+
+		#force allow public key authentication
+		sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
+		;;
+	[Nn]*) exit ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
 #replace authorized keys file to .ssh/authorized_keys
-mkdir /home/deef/.ssh
-touch /home/deef/.ssh/authorized_keys
-cp -f authorized_keys /home/deef/.ssh/authorized_keys
 
+while true; do
+	read -p "Add authorized Keys? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		mkdir ~/.ssh
+		touch ~.ssh/authorized_keys
+		cat authorized_keys >>~/.ssh/authorized_keys
+		;;
+	[Nn]*) exit ;;
 
-echo setting git user
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
+#echo setting git user
 #set git user
 #read -p "Enter name for git [Jeffrey Koehler Auto]: " name
 #name=${name:-"Jeffrey Koehler Auto"}
@@ -54,13 +97,4 @@ echo setting git user
 #email=${email:-"jeffreykoehlerauto@deef.tech"}
 #git config --global user.email $email
 
-echo setting girectory colors
-#set colors
-cp .dircolors /home/deef/.dircolors
-
-echo reloading bashrc.
-#reload the bash file, reloading all the 
-
-su deef
-
-source /home/deef/.bashrc
+source ~/.bashrc
