@@ -7,6 +7,7 @@ while true; do
 	case $yn in
 	[Yy]*)
 		useradd --home /home/deef --create-home --shell /bin/bash deef
+		break
 		;;
 	[Nn]*) break ;;
 
@@ -30,6 +31,7 @@ while true; do
 		cp -f .bash_aliases ~/.bash_aliases
 		cp -f .dircolors ~/.dircolors
 
+		break
 		;;
 	[Nn]*) break ;;
 
@@ -44,6 +46,7 @@ while true; do
 		sudo apt update
 		sudo apt upgrade
 		sudo apt install openssh-server htop
+		break
 		;;
 	[Nn]*) break ;;
 
@@ -63,6 +66,7 @@ while true; do
 
 		#force allow public key authentication
 		sudo sed -i 's/#\?\s*\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
+		break
 		;;
 	[Nn]*) break ;;
 
@@ -77,8 +81,9 @@ while true; do
 	case $yn in
 	[Yy]*)
 		mkdir ~/.ssh
-		touch ~.ssh/authorized_keys
+		touch ~/.ssh/authorized_keys
 		cat authorized_keys >>~/.ssh/authorized_keys
+		break
 		;;
 	[Nn]*) break ;;
 
