@@ -42,9 +42,5 @@ read -p "Enter name for git [jeffreykoehlerauto@deef.tech]: " email
 email=${email:-"jeffreykoehlerauto@deef.tech"}
 git config --global user.email $email
 
-#set colors
-eval $(dircolors -b .dircolors)
-
-
 #reload the bash file, reloading all the 
 source ~/.bashrc

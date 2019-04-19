@@ -1,3 +1,14 @@
+
+##################
+#####SETTINGS#####
+##################
+
+#set colors
+eval $(dircolors -b ~/startup/.dircolors)
+
+##################
+#####ALIASES######
+##################
 alias reboot='sudo reboot'
 alias update='sudo apt-get upgrade'
 
