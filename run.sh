@@ -129,6 +129,22 @@ done
 
 
 while true; do
+	read -p "Regenerate SSH Server Keys? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		sudo rm -v /etc/ssh/ssh_host_*
+		sudo dpkg-reconfigure openssh-server
+		sudo systemctl restart ssh
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
+
+while true; do
 	read -p "Install Golang? [y/n]" yn
 	case $yn in
 	[Yy]*)
