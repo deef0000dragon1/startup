@@ -6,6 +6,7 @@ eval $(dircolors -b ~/.dircolors)
 #+-~:
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\[$(tput setaf 1)\]╠════\[$(tput setaf 6)\]\d, \t \n\[$(tput setaf 1)\]╚═\[$(tput setaf 7)\]\w:\[$(tput sgr0)\]"
 
+source /etc/profile.d/golang_path.sh
 
 alias reboot='sudo reboot'
 alias update='sudo apt-get upgrade'
