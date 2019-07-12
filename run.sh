@@ -28,6 +28,21 @@ fi
 #fi
 
 while true; do
+	read -p "Set New Hostname? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		read -p "Enter New Hostname: " name
+		sudo hostnamectl set-hostname $name
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
+
+while true; do
 	read -p "Move files into home? [y/n]" yn
 	case $yn in
 	[Yy]*)
@@ -42,6 +57,7 @@ while true; do
 	*) echo "Please answer yes or no." ;;
 	esac
 done
+
 
 
 while true; do
