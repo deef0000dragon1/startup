@@ -2,18 +2,21 @@
 
 set +e
 
-while true; do
-	read -p "Create User Deef? [y/n]" yn
-	case $yn in
-	[Yy]*)
-		useradd --home /home/deef --create-home --shell /bin/bash deef
-		break
-		;;
-	[Nn]*) break ;;
-
-	*) echo "Please answer yes or no." ;;
-	esac
-done
+if getent passwd deef > /dev/null 2>&1; then
+	echo "User deef already exists"
+else
+	while true; do
+		read -p "Create User Deef? [y/n]" yn
+		case $yn in
+		[Yy]*)
+			useradd --home /home/deef --create-home --shell /bin/bash deef
+			break
+			;;
+		[Nn]*) break ;;
+		*) echo "Please answer yes or no." ;;
+		esac
+	done
+fi
 
 #This program runs an automated script that loads in all the necessary files such as public keys and alias files and file structures
 
@@ -39,6 +42,23 @@ while true; do
 	esac
 done
 
+
+while true; do
+	read -p "Move files into root? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		#move bash aliases to home directory
+		sudo cp -f .bash_aliases /root/.bash_aliases
+		sudo cp -f .dircolors /root/.dircolors
+
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
 while true; do
 	read -p "update/upgrade/install? [y/n]" yn
 	case $yn in
@@ -55,7 +75,7 @@ while true; do
 done
 
 while true; do
-	read -p "Update Key Values? [y/n]" yn
+	read -p "Update Key Settings? [y/n]" yn
 	case $yn in
 	[Yy]*)
 		#force no root login over ssh
@@ -90,6 +110,41 @@ while true; do
 	*) echo "Please answer yes or no." ;;
 	esac
 done
+
+while true; do
+	read -p "Add authorized Keys to root? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		sudo mkdir /root/.ssh
+		sudo touch /root/.ssh/authorized_keys
+		sudo cat authorized_keys >>/root/.ssh/authorized_keys
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
+
+
+while true; do
+	read -p "Install Golang? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		rm update-golang.sh
+		wget https://raw.githubusercontent.com/udhos/update-golang/master/update-golang.sh
+		sudo bash ./update-golang.sh
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
+
+
+
 
 #echo setting git user
 #set git user
