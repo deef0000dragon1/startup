@@ -1,5 +1,6 @@
 #! /bin/bash
 
+
 set +e
 
 if getent passwd deef > /dev/null 2>&1; then
