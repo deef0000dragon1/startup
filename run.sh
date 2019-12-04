@@ -63,7 +63,7 @@ while true; do
 	case $yn in
 	[Yy]*)
 		#move bash aliases to home directory
-		echo "test -f ~/.bash_alises && . ~/.bash_alisese" >> ~/.bashrc
+		echo "test -f ~/startup/.bash_alises && . ~/startup/.bash_alisese" >> ~/.bashrc
 		test -f ~/.bash_profile && echo "test -f ~/.bashrc && . ~/.bashrc" >> ~/.bash_profile
 
 		break
