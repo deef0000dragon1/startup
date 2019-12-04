@@ -8,7 +8,22 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\
 
 test -f /etc/profile.d/golang_path.sh && source /etc/profile.d/golang_path.sh
 #command -v kubectl.exe && source <(kubectl.exe completion bash)
-command -v kubectl > /dev/null && source <(kubectl completion bash)
+
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux
+		#need to test for if this a unix install or not.
+		command -v kubectl > /dev/null && source <(kubectl completion bash)
+		command -v minikube > /dev/null && source <(minikube completion bash)
+		;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo ${machine}
+
 
 
 
