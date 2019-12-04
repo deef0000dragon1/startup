@@ -58,7 +58,21 @@ while true; do
 	esac
 done
 
+while true; do
+	read -p "Append 'source .bash_alisese' to .bashrc? [y/n]" yn
+	case $yn in
+	[Yy]*)
+		#move bash aliases to home directory
+		echo "test -f ~/.bash_alises && . ~/.bash_alisese" >> ~/.bashrc
+		test -f ~/.bash_profile && echo "test -f ~/.bashrc && . ~/.bashrc" >> ~/.bash_profile
 
+		break
+		;;
+	[Nn]*) break ;;
+
+	*) echo "Please answer yes or no." ;;
+	esac
+done
 
 while true; do
 	read -p "Move files into root? [y/n]" yn

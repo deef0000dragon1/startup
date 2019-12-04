@@ -6,11 +6,12 @@ eval $(dircolors -b ~/.dircolors)
 #+-~:
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\[$(tput setaf 1)\]╠════\[$(tput setaf 6)\]\d, \t \n\[$(tput setaf 1)\]╚═\[$(tput setaf 7)\]\w:\[$(tput sgr0)\]"
 
-source /etc/profile.d/golang_path.sh
+test -f /etc/profile.d/golang_path.sh && source /etc/profile.d/golang_path.sh
+source <(kubectl completion bash)
 
 alias reboot='sudo reboot'
 alias update='sudo apt-get upgrade'
-
+alias kubeshell=echo kubectl run -i --tty busybox --image=busybox --restart=Never -- sh 
 
 
 alias ls='ls -alh --color=auto' ## Use a long listing format ##
