@@ -1,10 +1,5 @@
 eval $(dircolors -b ~/startup/.dircolors)
 
-#Set Bash Prompt to 
-#+-streem@mx.streem.tech
-#¦----Wed Mar 27, 09:06:06
-#+-~:
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\[$(tput setaf 1)\]╠════\[$(tput setaf 6)\]\d, \t \n\[$(tput setaf 1)\]╚═\[$(tput setaf 7)\]\w:\[$(tput sgr0)\]"
 
 test -f /etc/profile.d/golang_path.sh && source /etc/profile.d/golang_path.sh
 #command -v kubectl.exe && source <(kubectl.exe completion bash)
@@ -22,8 +17,12 @@ case "${unameOut}" in
     MINGW*)     machine=MinGw;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
-echo ${machine}
-
+#echo ${machine}
+#Set Bash Prompt to 
+#+-streem@mx.streem.tech; Linux
+#¦----Wed Mar 27, 09:06:06
+#+-~:
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H; $machine \n\[$(tput setaf 1)\]╠════\[$(tput setaf 6)\]\d, \t \n\[$(tput setaf 1)\]╚═\[$(tput setaf 7)\]\w:\[$(tput sgr0)\]"
 
 
 
