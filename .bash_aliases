@@ -4,7 +4,7 @@ eval $(dircolors -b ~/startup/.dircolors)
 test -f /etc/profile.d/golang_path.sh && source /etc/profile.d/golang_path.sh
 #command -v kubectl.exe && source <(kubectl.exe completion bash)
 
-
+export GOPRIVATE=streem.tech,*.streem.tech
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     machine=Linux
