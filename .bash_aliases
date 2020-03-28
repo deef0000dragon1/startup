@@ -8,7 +8,8 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]╔═\[$(tput setaf 2)\]\u@\H\n\
 
 test -f /etc/profile.d/golang_path.sh && source /etc/profile.d/golang_path.sh
 #command -v kubectl.exe && source <(kubectl.exe completion bash)
-
+export PATH=$PATH:$HOME/go/bin
+export GOPRIVATE=streem.tech,*.streem.tech
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
@@ -48,9 +49,9 @@ alias upgrade="sudo apt-get upgrade"
 
 alias shutdown="sudo shutdown -h now"
 
-alias wget='wget -c'
+alias wget="wget -c"
 alias size="du -hs $(pwd)"
-
+alias swagger="docker run -d -p 5050:8080 swaggerapi/swagger-editor"
 ###################
 #####FUNCTIONS#####
 ###################
