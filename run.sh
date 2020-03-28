@@ -43,7 +43,7 @@ done
 
 
 while true; do
-	read -p "Move files into home? [y/n]" yn
+	read -p "Move files into home? [y/n] (Not needed if appending to .bashrc)" yn
 	case $yn in
 	[Yy]*)
 		#move bash aliases to home directory
@@ -63,7 +63,7 @@ while true; do
 	case $yn in
 	[Yy]*)
 		#move bash aliases to home directory
-		echo "test -f ~/startup/.bash_alises && . ~/startup/.bash_alisese" >> ~/.bashrc
+		echo "test -f ~/startup/.bash_aliases && . ~/startup/.bash_aliases" >> ~/.bashrc
 		test -f ~/.bash_profile && echo "test -f ~/.bashrc && . ~/.bashrc" >> ~/.bash_profile
 
 		break
